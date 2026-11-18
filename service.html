@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services — FitLife Club</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <header class="sticky top-0 z-50 backdrop-blur-md border-b" style="background-color: var(--card-bg); border-color: var(--border-color);">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="text-2xl font-bold cursor-pointer" style="color: var(--text-color);">
+                FitLife<span style="color: var(--primary);">.</span>
+            </a>
+            
+            <nav class="hidden md:flex gap-8 items-center">
+                <a href="index.html" id="nav-home" class="nav-link">Home</a>
+                <a href="program.html" id="nav-programs" class="nav-link">Programs</a>
+                <a href="service.html" id="nav-services" class="nav-link active">Services & Pricing</a>
+                <a href="about.html" id="nav-about" class="nav-link">About</a>
+                <a href="profile.html" id="nav-profile" class="nav-link">Profile</a>
+                <a href="contact.html" id="nav-contact" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <div id="live-clock" class="font-mono text-sm px-3 py-1.5 rounded-lg border" style="background: var(--bg-color); border-color: var(--border-color); color: var(--text-muted);">
+                    00:00:00
+                </div>
+                <button id="theme-toggle" class="px-3 py-1.5 text-xs font-semibold rounded-lg border border-[#ff6600] text-[#ff6600] hover:bg-[#ff6600] hover:text-black transition">
+                    Toggle Theme
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <div class="max-w-7xl mx-auto px-6 py-16">
+            <h1 class="text-4xl font-extrabold text-center mb-4">Services & Membership Plans</h1>
+            <p class="text-center mb-12" style="color: var(--text-muted);">Choose the membership tier that fits your lifestyle.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+                <div class="custom-card p-8 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-2">Starter</h3>
+                        <div class="text-3xl font-extrabold my-4 text-[#ff6600]">15,000 ₸ <span class="text-sm font-normal" style="color: var(--text-muted);">/ mo</span></div>
+                        <ul class="space-y-3 mb-8 text-sm" style="color: var(--text-muted);">
+                            <li>✓ Gym access (08:00 – 17:00)</li>
+                            <li>✓ Introductory personal training session</li>
+                            <li>✓ Secure locker and shower access</li>
+                        </ul>
+                    </div>
+                    <button onclick="selectPlan('Starter Plan')" class="w-full py-3 rounded-xl border border-zinc-700 font-semibold hover:bg-zinc-900 transition">Select Plan</button>
+                </div>
+
+                <div class="custom-card p-8 flex flex-col justify-between border-[#ff6600] relative shadow-lg shadow-[#ff6600]/10">
+                    <div class="absolute -top-3 right-6 bg-[#ff6600] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Popular</div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-2">Unlimited</h3>
+                        <div class="text-3xl font-extrabold my-4 text-[#ff6600]">25,000 ₸ <span class="text-sm font-normal" style="color: var(--text-muted);">/ mo</span></div>
+                        <ul class="space-y-3 mb-8 text-sm" style="color: var(--text-muted);">
+                            <li>✓ 24/7 unlimited gym access</li>
+                            <li>✓ All group fitness classes included</li>
+                            <li>✓ Sauna and smoothie bar privileges</li>
+                            <li>✓ 7-day membership freeze option</li>
+                        </ul>
+                    </div>
+                    <button onclick="selectPlan('Unlimited Plan')" class="w-full py-3 rounded-xl bg-[#ff6600] hover:bg-[#e55b00] text-white font-bold transition">Select Plan</button>
+                </div>
+
+                <div class="custom-card p-8 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-2">VIP Personal</h3>
+                        <div class="text-3xl font-extrabold my-4 text-[#ff6600]">55,000 ₸ <span class="text-sm font-normal" style="color: var(--text-muted);">/ mo</span></div>
+                        <ul class="space-y-3 mb-8 text-sm" style="color: var(--text-muted);">
+                            <li>✓ All Unlimited plan perks</li>
+                            <li>✓ 8 1-on-1 personal coaching sessions</li>
+                            <li>✓ Customized nutrition and macro plan</li>
+                            <li>✓ Dedicated permanent personal locker</li>
+                        </ul>
+                    </div>
+                    <button onclick="selectPlan('VIP Personal Plan')" class="w-full py-3 rounded-xl border border-zinc-700 font-semibold hover:bg-zinc-900 transition">Select Plan</button>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-2xl font-bold text-center mb-8">Frequently Asked Questions</h2>
+                <div class="space-y-4">
+                    <div class="custom-card overflow-hidden">
+                        <button onclick="toggleAccordion(this)" class="w-full p-5 text-left font-semibold flex justify-between items-center">
+                            What should I bring to my first workout?
+                            <span class="text-xl font-bold">+</span>
+                        </button>
+                        <div class="accordion-content px-5 pb-5 text-sm hidden" style="color: var(--text-muted);">
+                            Bring comfortable sportswear, clean indoor athletic shoes, a small personal towel, and a refillable water bottle.
+                        </div>
+                    </div>
+
+                    <div class="custom-card overflow-hidden">
+                        <button onclick="toggleAccordion(this)" class="w-full p-5 text-left font-semibold flex justify-between items-center">
+                            Can I freeze my membership?
+                            <span class="text-xl font-bold">+</span>
+                        </button>
+                        <div class="accordion-content px-5 pb-5 text-sm hidden" style="color: var(--text-muted);">
+                            Yes! Depending on your chosen membership plan, complimentary freezes range from 7 to 30 days per calendar year.
+                        </div>
+                    </div>
+
+                    <div class="custom-card overflow-hidden">
+                        <button onclick="toggleAccordion(this)" class="w-full p-5 text-left font-semibold flex justify-between items-center">
+                            Are group classes included in the membership?
+                            <span class="text-xl font-bold">+</span>
+                        </button>
+                        <div class="accordion-content px-5 pb-5 text-sm hidden" style="color: var(--text-muted);">
+                            Group classes are fully included in both Unlimited and VIP Personal membership packages.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="border-t py-8 mt-auto" style="background-color: var(--card-bg); border-color: var(--border-color);">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm" style="color: var(--text-muted);">
+            <p>&copy; 2026 FitLife Club. All rights reserved.</p>
+            <div id="saved-bookings-info" class="text-xs"></div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

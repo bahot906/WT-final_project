@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile — FitLife Club</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <header class="sticky top-0 z-50 backdrop-blur-md border-b" style="background-color: var(--card-bg); border-color: var(--border-color);">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="text-2xl font-bold cursor-pointer" style="color: var(--text-color);">
+                FitLife<span style="color: var(--primary);">.</span>
+            </a>
+            
+            <nav class="hidden md:flex gap-8 items-center">
+                <a href="index.html" id="nav-home" class="nav-link">Home</a>
+                <a href="program.html" id="nav-programs" class="nav-link">Programs</a>
+                <a href="service.html" id="nav-services" class="nav-link">Services & Pricing</a>
+                <a href="about.html" id="nav-about" class="nav-link">About</a>
+                <a href="profile.html" id="nav-profile" class="nav-link active">Profile</a>
+                <a href="contact.html" id="nav-contact" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <div id="live-clock" class="font-mono text-sm px-3 py-1.5 rounded-lg border" style="background: var(--bg-color); border-color: var(--border-color); color: var(--text-muted);">
+                    00:00:00
+                </div>
+                <button id="theme-toggle" class="px-3 py-1.5 text-xs font-semibold rounded-lg border border-[#ff6600] text-[#ff6600] hover:bg-[#ff6600] hover:text-black transition">
+                    Toggle Theme
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-6 py-16 flex-grow">
+        <h1 class="text-3xl font-extrabold mb-6">User Profile (Simulation)</h1>
+        <div id="profile-card" class="p-8 rounded-xl border custom-card">
+            <p id="user-info" class="text-lg text-[var(--text-muted)] mb-6">Loading user details from localStorage...</p>
+            <button onclick="localStorage.clear(); location.reload();" class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition text-sm font-semibold">Log Out / Clear Data</button>
+        </div>
+    </main>
+
+    <footer class="border-t py-8 mt-auto" style="background-color: var(--card-bg); border-color: var(--border-color);">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm" style="color: var(--text-muted);">
+            <p>&copy; 2026 FitLife Club. All rights reserved.</p>
+            <div id="saved-bookings-info" class="text-xs"></div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const user = JSON.parse(localStorage.getItem('fitlife_user') || 'null');
+            const infoEl = document.getElementById('user-info');
+            if (user) {
+                infoEl.innerHTML = `<strong>Name:</strong> ${user.name || 'N/A'}<br><strong>Email:</strong> ${user.email || 'N/A'}<br><strong>Status:</strong> Authenticated via LocalStorage`;
+            } else {
+                infoEl.innerHTML = `No user logged in. Please fill out the contact form or sign up to store credentials.`;
+            }
+        });
+    </script>
+</body>
+</html>

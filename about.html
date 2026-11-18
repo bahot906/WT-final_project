@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us — FitLife Club</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <header class="sticky top-0 z-50 backdrop-blur-md border-b" style="background-color: var(--card-bg); border-color: var(--border-color);">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="text-2xl font-bold cursor-pointer" style="color: var(--text-color);">
+                FitLife<span style="color: var(--primary);">.</span>
+            </a>
+            
+            <nav class="hidden md:flex gap-8 items-center">
+                <a href="index.html" id="nav-home" class="nav-link">Home</a>
+                <a href="program.html" id="nav-programs" class="nav-link">Programs</a>
+                <a href="service.html" id="nav-services" class="nav-link">Services & Pricing</a>
+                <a href="about.html" id="nav-about" class="nav-link active">About</a>
+                <a href="profile.html" id="nav-profile" class="nav-link">Profile</a>
+                <a href="contact.html" id="nav-contact" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <div id="live-clock" class="font-mono text-sm px-3 py-1.5 rounded-lg border" style="background: var(--bg-color); border-color: var(--border-color); color: var(--text-muted);">
+                    00:00:00
+                </div>
+                <button id="theme-toggle" class="px-3 py-1.5 text-xs font-semibold rounded-lg border border-[#ff6600] text-[#ff6600] hover:bg-[#ff6600] hover:text-black transition">
+                    Toggle Theme
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 py-16 flex-grow">
+        <h1 class="text-4xl font-extrabold mb-6">About FitLife Club</h1>
+        <p class="text-lg text-[var(--text-muted)] mb-8">We are dedicated to helping you achieve your fitness goals with state-of-the-art equipment, professional trainers, and a supportive community.</p>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="p-6 rounded-xl border custom-card">
+                <h3 class="text-xl font-bold mb-3 text-[var(--primary)]">Our Mission</h3>
+                <p class="text-[var(--text-muted)]">To empower individuals to live healthier, stronger, and more active lives through structured programs and expert guidance.</p>
+            </div>
+            <div class="p-6 rounded-xl border custom-card">
+                <h3 class="text-xl font-bold mb-3 text-[var(--primary)]">Professional Trainers</h3>
+                <p class="text-[var(--text-muted)]">Our certified coaches bring years of experience in strength training, yoga, CrossFit, and nutrition planning.</p>
+            </div>
+            <div class="p-6 rounded-xl border custom-card">
+                <h3 class="text-xl font-bold mb-3 text-[var(--primary)]">Modern Facilities</h3>
+                <p class="text-[var(--text-muted)]">Equipped with top-tier fitness gear, spacious workout zones, and relaxing recovery lounges.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="border-t py-8 mt-auto" style="background-color: var(--card-bg); border-color: var(--border-color);">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm" style="color: var(--text-muted);">
+            <p>&copy; 2026 FitLife Club. All rights reserved.</p>
+            <div id="saved-bookings-info" class="text-xs"></div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

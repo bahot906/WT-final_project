@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programs — FitLife Club</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <header class="sticky top-0 z-50 backdrop-blur-md border-b" style="background-color: var(--card-bg); border-color: var(--border-color);">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="text-2xl font-bold cursor-pointer" style="color: var(--text-color);">
+                FitLife<span style="color: var(--primary);">.</span>
+            </a>
+            
+            <nav class="hidden md:flex gap-8 items-center">
+                <a href="index.html" id="nav-home" class="nav-link">Home</a>
+                <a href="program.html" id="nav-programs" class="nav-link active">Programs</a>
+                <a href="service.html" id="nav-services" class="nav-link">Services & Pricing</a>
+                <a href="about.html" id="nav-about" class="nav-link">About</a>
+                <a href="profile.html" id="nav-profile" class="nav-link">Profile</a>
+                <a href="contact.html" id="nav-contact" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <div id="live-clock" class="font-mono text-sm px-3 py-1.5 rounded-lg border" style="background: var(--bg-color); border-color: var(--border-color); color: var(--text-muted);">
+                    00:00:00
+                </div>
+                <button id="theme-toggle" class="px-3 py-1.5 text-xs font-semibold rounded-lg border border-[#ff6600] text-[#ff6600] hover:bg-[#ff6600] hover:text-black transition">
+                    Toggle Theme
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <div class="max-w-7xl mx-auto px-6 py-16">
+            <h1 class="text-4xl font-extrabold text-center mb-4">Training Programs</h1>
+            <p class="text-center mb-10" style="color: var(--text-muted);">Explore our expert-led fitness routines tailored for every goal.</p>
+
+            <!-- Filter Bar -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12">
+                <button class="filter-btn px-5 py-2 rounded-full border text-sm font-semibold transition bg-[#ff6600] text-white border-[#ff6600]" data-filter="all" onclick="filterPrograms('all', this)">All</button>
+                <button class="filter-btn px-5 py-2 rounded-full border text-sm font-semibold transition" data-filter="strength" onclick="filterPrograms('strength', this)" style="border-color: var(--border-color);">Strength</button>
+                <button class="filter-btn px-5 py-2 rounded-full border text-sm font-semibold transition" data-filter="cardio" onclick="filterPrograms('cardio', this)" style="border-color: var(--border-color);">Cardio / Fat Loss</button>
+                <button class="filter-btn px-5 py-2 rounded-full border text-sm font-semibold transition" data-filter="mind" onclick="filterPrograms('mind', this)" style="border-color: var(--border-color);">Mind & Body</button>
+            </div>
+
+            <!-- Programs Grid -->
+            <div id="programs-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="custom-card program-card overflow-hidden flex flex-col" data-category="strength">
+                    <img src="class-1.jpg" alt="Strength Training" class="w-full h-48 object-cover" onerror="this.src='https://placehold.co/600x400/141414/ff6600?text=Power+Pump'">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <span class="inline-block px-3 py-1 rounded text-xs font-bold bg-[#ff6600]/20 text-[#ff6600] w-max mb-3">Strength</span>
+                        <h3 class="text-xl font-bold mb-2">Power Pump</h3>
+                        <p class="text-sm mb-6 flex-grow" style="color: var(--text-muted);">High-intensity barbell workout targeting all major muscle groups for strength and toning.</p>
+                        <div class="flex items-center justify-between pt-4 border-t" style="border-color: var(--border-color);">
+                            <span class="text-xs font-semibold" style="color: var(--text-muted);">⏱ 60 min</span>
+                            <button onclick="bookProgram('Power Pump')" class="px-4 py-2 bg-[#ff6600] hover:bg-[#e55b00] text-white text-xs font-bold rounded-lg transition">Join Class</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="custom-card program-card overflow-hidden flex flex-col" data-category="cardio">
+                    <img src="class-2.jpg" alt="Cardio Training" class="w-full h-48 object-cover" onerror="this.src='https://placehold.co/600x400/141414/ff6600?text=HIIT+Burn'">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <span class="inline-block px-3 py-1 rounded text-xs font-bold bg-[#ff6600]/20 text-[#ff6600] w-max mb-3">Cardio</span>
+                        <h3 class="text-xl font-bold mb-2">HIIT Burn</h3>
+                        <p class="text-sm mb-6 flex-grow" style="color: var(--text-muted);">High-intensity interval training designed for maximum calorie burn and cardiovascular endurance.</p>
+                        <div class="flex items-center justify-between pt-4 border-t" style="border-color: var(--border-color);">
+                            <span class="text-xs font-semibold" style="color: var(--text-muted);">⏱ 45 min</span>
+                            <button onclick="bookProgram('HIIT Burn')" class="px-4 py-2 bg-[#ff6600] hover:bg-[#e55b00] text-white text-xs font-bold rounded-lg transition">Join Class</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="custom-card program-card overflow-hidden flex flex-col" data-category="mind">
+                    <img src="join (1).jpg" alt="Yoga Session" class="w-full h-48 object-cover" onerror="this.src='https://placehold.co/600x400/141414/ff6600?text=Yoga+Balance'">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <span class="inline-block px-3 py-1 rounded text-xs font-bold bg-[#ff6600]/20 text-[#ff6600] w-max mb-3">Mind & Body</span>
+                        <h3 class="text-xl font-bold mb-2">Yoga Balance</h3>
+                        <p class="text-sm mb-6 flex-grow" style="color: var(--text-muted);">Harmonize body and mind while enhancing deep flexibility, core balance, and complete stress relief.</p>
+                        <div class="flex items-center justify-between pt-4 border-t" style="border-color: var(--border-color);">
+                            <span class="text-xs font-semibold" style="color: var(--text-muted);">⏱ 90 min</span>
+                            <button onclick="bookProgram('Yoga Balance')" class="px-4 py-2 bg-[#ff6600] hover:bg-[#e55b00] text-white text-xs font-bold rounded-lg transition">Join Class</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="border-t py-8 mt-auto" style="background-color: var(--card-bg); border-color: var(--border-color);">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm" style="color: var(--text-muted);">
+            <p>&copy; 2026 FitLife Club. All rights reserved.</p>
+            <div id="saved-bookings-info" class="text-xs"></div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

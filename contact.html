@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — FitLife Club</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <header class="sticky top-0 z-50 backdrop-blur-md border-b" style="background-color: var(--card-bg); border-color: var(--border-color);">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="text-2xl font-bold cursor-pointer" style="color: var(--text-color);">
+                FitLife<span style="color: var(--primary);">.</span>
+            </a>
+            
+            <nav class="hidden md:flex gap-8 items-center">
+                <a href="index.html" id="nav-home" class="nav-link">Home</a>
+                <a href="program.html" id="nav-programs" class="nav-link">Programs</a>
+                <a href="service.html" id="nav-services" class="nav-link">Services & Pricing</a>
+                <a href="about.html" id="nav-about" class="nav-link">About</a>
+                <a href="profile.html" id="nav-profile" class="nav-link">Profile</a>
+                <a href="contact.html" id="nav-contact" class="nav-link active">Contact</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <div id="live-clock" class="font-mono text-sm px-3 py-1.5 rounded-lg border" style="background: var(--bg-color); border-color: var(--border-color); color: var(--text-muted);">
+                    00:00:00
+                </div>
+                <button id="theme-toggle" class="px-3 py-1.5 text-xs font-semibold rounded-lg border border-[#ff6600] text-[#ff6600] hover:bg-[#ff6600] hover:text-black transition">
+                    Toggle Theme
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <div class="max-w-7xl mx-auto px-6 py-16">
+            <h1 class="text-4xl font-extrabold text-center mb-4">Get in Touch</h1>
+            <p class="text-center mb-12" style="color: var(--text-muted);">We are ready to answer any questions or help you start your fitness journey.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="custom-card p-8">
+                    <h3 class="text-2xl font-bold mb-6 text-[#ff6600]">Contact Information</h3>
+                    <div class="space-y-4 text-sm" style="color: var(--text-muted);">
+                        <p><strong>Address:</strong> 53 Kabanbay Batyr Ave, Astana</p>
+                        <p><strong>Phone:</strong> +7 (7172) 00-00-00</p>
+                        <p><strong>Email:</strong> info@fitlife.kz</p>
+                        <p><strong>Working Hours:</strong> Mon-Sun: 07:00 – 23:00</p>
+                    </div>
+                </div>
+
+                <div class="custom-card p-8">
+                    <h3 class="text-2xl font-bold mb-6">Send Us a Message</h3>
+                    <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Your Name</label>
+                            <input type="text" id="contact-name" required placeholder="Alisher" class="w-full px-4 py-2.5 rounded-lg border bg-transparent text-sm" style="border-color: var(--border-color);">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Email Address</label>
+                            <input type="email" id="contact-email" required placeholder="example@mail.com" class="w-full px-4 py-2.5 rounded-lg border bg-transparent text-sm" style="border-color: var(--border-color);">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold mb-1">Message</label>
+                            <textarea id="contact-message" rows="4" required placeholder="Your question or request..." class="w-full px-4 py-2.5 rounded-lg border bg-transparent text-sm" style="border-color: var(--border-color);"></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-3 bg-[#ff6600] hover:bg-[#e55b00] text-white font-bold rounded-xl text-sm transition">Send Message</button>
+                        <div id="contact-alert" class="text-center text-sm font-medium pt-2 hidden"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="border-t py-8 mt-auto" style="background-color: var(--card-bg); border-color: var(--border-color);">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm" style="color: var(--text-muted);">
+            <p>&copy; 2026 FitLife Club. All rights reserved.</p>
+            <div id="saved-bookings-info" class="text-xs"></div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

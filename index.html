@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home — FitLife Club</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <header class="sticky top-0 z-50 backdrop-blur-md border-b" style="background-color: var(--card-bg); border-color: var(--border-color);">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="text-2xl font-bold cursor-pointer" style="color: var(--text-color);">
+                FitLife<span style="color: var(--primary);">.</span>
+            </a>
+            
+            <nav class="hidden md:flex gap-8 items-center">
+                <a href="index.html" id="nav-home" class="nav-link active">Home</a>
+                <a href="program.html" id="nav-programs" class="nav-link">Programs</a>
+                <a href="service.html" id="nav-services" class="nav-link">Services & Pricing</a>
+                <a href="about.html" id="nav-about" class="nav-link">About</a>
+                <a href="profile.html" id="nav-profile" class="nav-link">Profile</a>
+                <a href="contact.html" id="nav-contact" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <div id="live-clock" class="font-mono text-sm px-3 py-1.5 rounded-lg border" style="background: var(--bg-color); border-color: var(--border-color); color: var(--text-muted);">
+                    00:00:00
+                </div>
+                <button id="theme-toggle" class="px-3 py-1.5 text-xs font-semibold rounded-lg border border-[#ff6600] text-[#ff6600] hover:bg-[#ff6600] hover:text-black transition">
+                    Toggle Theme
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <div class="py-24 px-6 text-center" style="background: linear-gradient(180deg, rgba(255, 102, 0, 0.12) 0%, rgba(11, 11, 11, 0) 100%);">
+            <div class="max-w-3xl mx-auto">
+                <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">Build Your Ideal Body</h1>
+                <p class="text-lg md:text-xl mb-8" style="color: var(--text-muted);">
+                    State-of-the-art equipment, qualified trainers, interactive progress tools, and personalized fitness programs.
+                </p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="program.html" class="px-6 py-3 rounded-xl font-bold bg-[#ff6600] text-white hover:bg-[#e55b00] transition shadow-lg shadow-[#ff6600]/20 text-center">
+                        Choose Program
+                    </a>
+                    <button onclick="openModal()" class="px-6 py-3 rounded-xl font-bold border border-zinc-700 hover:bg-zinc-900 transition" style="color: var(--text-color);">
+                        Book a Trial Visit
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 py-16">
+            <h2 class="text-3xl font-bold text-center mb-12">Why Choose FitLife Club</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="custom-card p-8">
+                    <div class="text-4xl mb-4">🏋️‍♂️</div>
+                    <h3 class="text-xl font-bold mb-2">Premium Equipment</h3>
+                    <p style="color: var(--text-muted);">Latest fitness gear from world-leading manufacturers tailored for optimal performance.</p>
+                </div>
+                <div class="custom-card p-8">
+                    <div class="text-4xl mb-4">🧘‍♀️</div>
+                    <h3 class="text-xl font-bold mb-2">Diverse Zones</h3>
+                    <p style="color: var(--text-muted);">Dedicated areas for crossfit, cardio, free weights, recovery lounges, and group classes.</p>
+                </div>
+                <div class="custom-card p-8">
+                    <div class="text-4xl mb-4">🏆</div>
+                    <h3 class="text-xl font-bold mb-2">Expert Coaches</h3>
+                    <p style="color: var(--text-muted);">Certified sports professionals ready to guide your progress every single step of the way.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- BMI / Calorie Calculator -->
+        <div class="max-w-5xl mx-auto px-6 pb-20">
+            <div class="custom-card p-8 md:p-12 border border-[#ff6600]/30">
+                <h2 class="text-2xl font-bold mb-2 text-center">Interactive Fitness & BMI Calculator</h2>
+                <p class="text-center text-sm mb-8" style="color: var(--text-muted);">Calculate your body mass index and daily calorie needs instantly.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="p-6 rounded-xl border" style="background: var(--bg-color); border-color: var(--border-color);">
+                        <h3 class="font-bold text-lg mb-4 text-[#ff6600]">BMI Calculator</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Weight (kg)</label>
+                                <input type="number" id="bmi-weight" placeholder="70" class="w-full px-3 py-2 rounded-lg border bg-transparent text-sm" style="border-color: var(--border-color);">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Height (cm)</label>
+                                <input type="number" id="bmi-height" placeholder="175" class="w-full px-3 py-2 rounded-lg border bg-transparent text-sm" style="border-color: var(--border-color);">
+                            </div>
+                            <button onclick="calculateBMI()" class="w-full py-2.5 bg-[#ff6600] hover:bg-[#e55b00] text-white font-bold rounded-lg text-sm transition">Calculate BMI</button>
+                            <div id="bmi-result" class="text-sm font-medium text-center pt-2"></div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 rounded-xl border" style="background: var(--bg-color); border-color: var(--border-color);">
+                        <h3 class="font-bold text-lg mb-4 text-[#ff6600]">Daily Calorie Target</h3>
+                        <div class="space-y-3">
+                            <div class="grid grid-cols-2 gap-2">
+                                <div>
+                                    <label class="block text-xs font-semibold mb-1">Age</label>
+                                    <input type="number" id="cal-age" placeholder="25" class="w-full px-3 py-2 rounded-lg border bg-transparent text-sm" style="border-color: var(--border-color);">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold mb-1">Gender</label>
+                                    <select id="cal-gender" class="w-full px-3 py-2 rounded-lg border bg-transparent text-sm" style="border-color: var(--border-color); background-color: var(--card-bg);">
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold mb-1">Activity Level</label>
+                                <select id="cal-activity" class="w-full px-3 py-2 rounded-lg border bg-transparent text-sm" style="border-color: var(--border-color); background-color: var(--card-bg);">
+                                    <option value="1.2">Sedentary (little or no exercise)</option>
+                                    <option value="1.375">Lightly active (1-3 days/week)</option>
+                                    <option value="1.55" selected>Moderately active (3-5 days/week)</option>
+                                    <option value="1.725">Very active (6-7 hard days/week)</option>
+                                </select>
+                            </div>
+                            <button onclick="calculateCalories()" class="w-full py-2.5 bg-[#ff6600] hover:bg-[#e55b00] text-white font-bold rounded-lg text-sm transition">Estimate Calories</button>
+                            <div id="cal-result" class="text-sm font-medium text-center pt-2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal -->
+    <div id="modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4">
+        <div class="custom-card p-8 max-w-md w-full relative">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-xl font-bold hover:text-[#ff6600]">&times;</button>
+            <h3 class="text-2xl font-bold mb-2">Book a Trial Session</h3>
+            <p class="text-xs mb-6" style="color: var(--text-muted);">Fill out your details and our manager will confirm your visit shortly.</p>
+            <form id="modal-form" onsubmit="handleModalSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold mb-1">Your Name</label>
+                    <input type="text" id="modal-name" required placeholder="Enter your name" class="w-full px-4 py-2.5 rounded-lg border bg-transparent text-sm" style="border-color: var(--border-color);">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold mb-1">Phone Number</label>
+                    <input type="tel" id="modal-phone" required placeholder="+7 (700) 000-00-00" class="w-full px-4 py-2.5 rounded-lg border bg-transparent text-sm" style="border-color: var(--border-color);">
+                </div>
+                <button type="submit" class="w-full py-3 bg-[#ff6600] hover:bg-[#e55b00] text-white font-bold rounded-xl text-sm transition">Submit Request</button>
+                <div id="modal-alert" class="text-center text-sm font-medium pt-2 hidden"></div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="border-t py-8 mt-auto" style="background-color: var(--card-bg); border-color: var(--border-color);">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm" style="color: var(--text-muted);">
+            <p>&copy; 2026 FitLife Club. All rights reserved.</p>
+            <div id="saved-bookings-info" class="text-xs"></div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
